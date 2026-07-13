@@ -31,8 +31,16 @@
 					<a href="#contact" data-i18n="navContact">Contact</a>
 				</nav>
 				<div class="topbar-actions" aria-label="Display controls">
-					<button class="control-btn" type="button" data-theme-toggle>Light</button>
-					<button class="control-btn" type="button" data-lang-toggle>RU</button>
+					<div class="control-group">
+						<button class="icon-control" type="button" data-theme-toggle aria-label="Toggle theme">
+							<i data-lucide="sun"></i>
+							<span data-theme-label>Light</span>
+						</button>
+						<button class="lang-control" type="button" data-lang-toggle aria-label="Switch language">
+							<i data-lucide="languages"></i>
+							<span data-lang-label>RU</span>
+						</button>
+					</div>
 				</div>
 			</header>
 
@@ -246,6 +254,7 @@
 				</section>
 			</main>
 		</div>
+		<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 		<script src="./script.js"></script>
 	</body>
 </html>

@@ -101,7 +101,9 @@ const translations = {
 
 const root = document.documentElement
 const langButton = document.querySelector('[data-lang-toggle]')
+const langLabel = document.querySelector('[data-lang-label]')
 const themeButton = document.querySelector('[data-theme-toggle]')
+const themeLabel = document.querySelector('[data-theme-label]')
 
 const savedLang = localStorage.getItem('portfolio-lang') || 'en'
 const savedTheme = localStorage.getItem('portfolio-theme') || 'dark'
@@ -112,22 +114,29 @@ function setLanguage(lang) {
 		const key = element.dataset.i18n
 		element.textContent = translations[lang][key]
 	})
-	langButton.textContent = lang === 'en' ? 'RU' : 'EN'
+	langLabel.textContent = lang === 'en' ? 'RU' : 'EN'
 	localStorage.setItem('portfolio-lang', lang)
-	updateThemeButton()
+	updateThemeControl()
 }
 
 function setTheme(theme) {
 	root.dataset.theme = theme
 	localStorage.setItem('portfolio-theme', theme)
-	updateThemeButton()
+	updateThemeControl()
 }
 
-function updateThemeButton() {
+function updateThemeControl() {
 	const lang = root.lang || 'en'
 	const theme = root.dataset.theme || 'dark'
-	themeButton.textContent =
-		theme === 'dark' ? translations[lang].themeLight : translations[lang].themeDark
+	const nextTheme = theme === 'dark' ? translations[lang].themeLight : translations[lang].themeDark
+	const iconName = theme === 'dark' ? 'sun' : 'moon'
+
+	themeLabel.textContent = nextTheme
+	themeButton.querySelector('i').setAttribute('data-lucide', iconName)
+
+	if (window.lucide) {
+		window.lucide.createIcons()
+	}
 }
 
 langButton.addEventListener('click', () => {
@@ -140,3 +149,7 @@ themeButton.addEventListener('click', () => {
 
 setTheme(savedTheme)
 setLanguage(savedLang)
+
+if (window.lucide) {
+	window.lucide.createIcons()
+}
