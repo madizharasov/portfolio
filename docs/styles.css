@@ -201,7 +201,7 @@ input {
 .profile-orbit {
 	display: grid;
 	place-items: center;
-	min-height: 230px;
+	min-height: 330px;
 	border-radius: 22px;
 	background:
 		radial-gradient(circle, rgba(56, 217, 214, 0.3) 0 18%, transparent 19%),
@@ -209,16 +209,13 @@ input {
 }
 
 .avatar {
-	display: grid;
-	place-items: center;
-	width: 132px;
-	height: 132px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	border-radius: 36px;
-	background: #090d14;
-	color: var(--text);
-	font-size: 42px;
-	font-weight: 900;
+	display: block;
+	width: min(100%, 290px);
+	aspect-ratio: 4 / 5;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 28px;
+	object-fit: cover;
+	object-position: 42% 34%;
 	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
